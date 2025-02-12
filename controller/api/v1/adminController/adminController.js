@@ -120,8 +120,8 @@ module.exports.adminChangePassword = async (req, res) => {
           req.body.password = await bcrypt.hash(req.body.nPass, 10);
         let updatePass = await Admin.findByIdAndUpdate(req.user._id,req.body);
         if (updatePass) {
-          let updatedData = await Admin.findById(req.user._id)
-          return res.status(200).json({ message: "password updated successfuly",data: updatedData});
+          let adminUpdatedData = await Admin.findById(req.user._id)
+          return res.status(200).json({ message: "password updated successfuly",data: adminUpdatedData});
         } else {
           return res.status(200).json({ message: "password not update" });
         }
