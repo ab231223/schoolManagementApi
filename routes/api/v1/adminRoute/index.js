@@ -15,6 +15,9 @@ routes.put("/adminProfileEdit/:id",passport.authenticate("jwt",{failureRedirect:
 
 routes.post("/adminChangePassword",passport.authenticate("jwt",{failureRedirect:"/api/failToLogin"}),adminCtrl.adminChangePassword)
 
+routes.post("/adminForgotPassword/:email",passport.authenticate("jwt",{failureRedirect:"/api/failToLogin"}),adminCtrl.adminForgotPassword)
+
+routes.post("/sendMail",adminCtrl.sendMail)
 
 routes.get("/failToLogin", async(req,res)=>{
     try {
